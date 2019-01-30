@@ -11,6 +11,7 @@ $CommandButton-padding: 8px;
 $CommandButtonIcon-size: 16px;
 $CommandButtonIcon-md-size: 20px;
 
+.fabric-custom {
 .ms-CommandButton {
   @include ms-baseFont;
   display: inline-block;
@@ -289,4 +290,5 @@ $CommandButtonIcon-md-size: 20px;
       font-size: 16px;
     }
   }
+}
 }

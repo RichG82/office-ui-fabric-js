@@ -1,3 +1,4 @@
+.fabric-custom {
 // The panel covers the entire screen.
 .ms-PanelHost {
   @include ms-baseFont;
@@ -11,4 +12,6 @@
 
 .ms-PanelHost .ms-Overlay {
   cursor: pointer;
+}
+
 }

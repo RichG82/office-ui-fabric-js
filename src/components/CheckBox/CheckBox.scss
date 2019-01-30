@@ -9,7 +9,7 @@ $ms-checkbox-field-size: 20px;
 $ms-checkbox-transition-duration: 200ms;
 $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
-
+.fabric-custom {
 .ms-CheckBox {
   box-sizing: border-box;
   color: $ms-color-neutralPrimary;
@@ -168,4 +168,5 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
       border-color: $ms-color-themeDarkAlt;
     }
   }
+}
 }

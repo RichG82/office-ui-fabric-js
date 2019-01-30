@@ -13,6 +13,7 @@ $SearchBox-commandbar-md-height: 44px;
 $disabled-color: #F4F4F4;
 $SearchBox-command-color: #F4F4F4;
 
+.fabric-custom {
 .ms-SearchBox {
   @include ms-baseFont;
   @include ms-u-normalize;
@@ -364,4 +365,5 @@ $SearchBox-command-color: #F4F4F4;
       }
     }
   }
+}
 }

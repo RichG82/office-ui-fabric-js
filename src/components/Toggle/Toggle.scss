@@ -8,6 +8,7 @@
 
 @import '../Label/Label.scss';
 
+.fabric-custom {
 // Slider mixin
 @mixin ms-Toggle-slider($direction) {
   // Slider pseudo element
@@ -245,4 +246,5 @@
   .ms-Toggle-field {
     float: right;
   }
+}
 }

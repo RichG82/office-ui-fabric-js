@@ -5,7 +5,7 @@
 // --------------------------------------------------
 // Link (anchor) styles
 
-
+.fabric-custom {
 @mixin ms-Link {
   @include ms-baseFont;
   font-size: $ms-font-size-m;
@@ -27,4 +27,6 @@
 
 .ms-Link {
   @include ms-Link;
+}
+
 }

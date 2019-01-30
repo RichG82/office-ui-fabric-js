@@ -16,6 +16,7 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
 
 //== DetailsList
 //
+.fabric-custom {
 .ms-DetailsList {
   position: relative;
 }
@@ -333,4 +334,5 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
 
 .ms-Check-check {
   stroke: $ms-color-neutralTertiaryAlt;
+}
 }

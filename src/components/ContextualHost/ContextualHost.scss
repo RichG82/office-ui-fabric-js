@@ -1,3 +1,4 @@
+.fabric-custom {
 .ms-ContextualHost {
   @include ms-baseFont;
   z-index: $ms-zIndex-front;
@@ -137,5 +138,9 @@
     .ms-ContextualHost-beak {
       display: block;
     }
+
   }
+
+}
+
 }

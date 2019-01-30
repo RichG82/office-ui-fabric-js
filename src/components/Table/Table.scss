@@ -5,6 +5,8 @@
 // --------------------------------------------------
 // Data table styles
 
+.fabric-custom {
+
 .ms-Table {
   @include ms-baseFont;
   display: table;
@@ -119,4 +121,5 @@
       }
     }
   }
+}
 }

@@ -9,6 +9,7 @@
 // Small
 //
 // The persona card docks to the bottom of the viewport.
+.fabric-custom {
 .ms-PersonaCard {
   @include ms-baseFont;
   @include ms-u-slideUpIn10;
@@ -204,4 +205,6 @@
       box-shadow: none;
     }
   }
+}
+
 }

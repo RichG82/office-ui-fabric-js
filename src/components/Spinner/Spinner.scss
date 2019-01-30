@@ -5,7 +5,7 @@
 // --------------------------------------------------
 // Spinner styles
 
-
+.fabric-custom {
 .ms-Spinner {
   @include ms-baseFont;
   position: relative;
@@ -44,4 +44,5 @@
   color: $ms-color-themePrimary;
   left: 28px;
   top: 2px;
+}
 }

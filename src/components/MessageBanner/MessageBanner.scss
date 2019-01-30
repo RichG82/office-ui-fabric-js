@@ -8,6 +8,7 @@
 $MessageBanner-height: 52px;
 $MessageBanner-iconSize: 40px;
 
+.fabric-custom {
 .ms-MessageBanner {
   @include ms-baseFont;
   color: $ms-color-neutralPrimary;
@@ -124,4 +125,6 @@ $MessageBanner-iconSize: 40px;
       color: $ms-color-themePrimary;
     }
   }
+}
+
 }

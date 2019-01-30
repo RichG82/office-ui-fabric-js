@@ -6,6 +6,7 @@
 // Dropdown styles
 
 // Mixin for high contrast mode link states
+.fabric-custom {
 @mixin highContrastListItemState {
   @media screen and (-ms-high-contrast: active) {
     background-color: $ms-color-contrastBlackSelected;
@@ -247,4 +248,5 @@
   }
 
   @include highContrastListItemState;
+}
 }

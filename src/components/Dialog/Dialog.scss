@@ -5,6 +5,7 @@
 // --------------------------------------------------
 // Dialog styles
 
+.fabric-custom {
 .ms-Dialog {
   @include ms-baseFont;
   @include drop-shadow(0, 0, 5px, 0, .4);
@@ -114,4 +115,5 @@
     min-width: 288px;
     max-width: 340px;
   }
+}
 }

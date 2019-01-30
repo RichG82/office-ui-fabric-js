@@ -16,6 +16,7 @@
   }
 }
 
+.fabric-custom {
 .ms-Label {
   @include ms-baseFont;
   @include ms-u-normalize;
@@ -33,4 +34,5 @@
   &.is-disabled {
     @include ms-Label-is-disabled;
   }
+}
 }

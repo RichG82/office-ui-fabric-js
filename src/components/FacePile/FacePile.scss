@@ -4,7 +4,7 @@
 // Office UI Fabric
 // --------------------------------------------------
 // FacePile styles
-
+.fabric-custom {
 .ms-FacePile {
   @include ms-baseFont;
   position: relative;
@@ -100,4 +100,5 @@
     height: 74px;
     text-transform: none;
   }
+}
 }

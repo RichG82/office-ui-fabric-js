@@ -5,6 +5,7 @@
 // --------------------------------------------------
 // Contextual Menu styles
 
+.fabric-custom {
 .ms-ContextualMenu {
   @include ms-baseFont;
   @include ms-u-normalize;
@@ -204,4 +205,5 @@
 
 .ms-ContextualMenu.ms-ContextualMenu--hasIcons {
   width: 220px;
+}
 }

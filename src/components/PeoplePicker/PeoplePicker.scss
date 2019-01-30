@@ -5,8 +5,11 @@
 // --------------------------------------------------
 // People Picker styles
 
+
 $personaItemHeight: 40px;
 $ms-Persona-leftPadding: 16px;
+
+.fabric-custom {
 
 .ms-PeoplePicker {
   @include ms-baseFont;
@@ -445,4 +448,6 @@ $ms-Persona-leftPadding: 16px;
 .ms-PeoplePicker-peopleListItem {
   margin-bottom: 6px;
   position: relative;
+}
+
 }

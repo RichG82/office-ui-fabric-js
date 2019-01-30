@@ -18,6 +18,7 @@ $red: #FF0000;
     border-right: 1px solid $color;
 }
 
+.fabric-custom {
 .ms-CommandBar {
   @include ms-baseFont;
   background-color: $ms-color-neutralLighter;
@@ -134,4 +135,5 @@ $red: #FF0000;
   @media only screen and (min-width: $ms-screen-xl-min) {
     padding-right: 20px;
   }
+}
 }

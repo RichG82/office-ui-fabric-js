@@ -40,7 +40,7 @@ $ms-Persona-presenceSizeMd: 12px;
 $ms-Persona-presenceSizeLg: 20px;
 $ms-Persona-presenceSizeXl: 28px;
 
-
+.fabric-custom {
 .ms-Persona {
   @include ms-baseFont;
   @include ms-u-normalize;
@@ -727,4 +727,6 @@ $ms-Persona-presenceSizeXl: 28px;
   .ms-Persona-initials {
     position: relative;
   }
+}
+
 }

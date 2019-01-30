@@ -10,6 +10,8 @@ $ProgressIndicatorMarginBetweenText: 8px;
 $ProgressIndicatorButtonsWidth: 218px;
 $ProgressIndicatorTextHeight: 18px;
 
+.fabric-custom {
+
 .ms-ProgressIndicator {
   @include ms-baseFont;
   font-weight: $ms-font-weight-regular;
@@ -60,4 +62,5 @@ $ProgressIndicatorTextHeight: 18px;
   @media screen and (-ms-high-contrast: black-on-white) {
     background-color: $ms-color-black;
   }
+}
 }

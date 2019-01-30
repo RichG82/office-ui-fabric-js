@@ -7,6 +7,7 @@
 
 $ms-Callout-commandButtonHeight: 27px;
 
+.fabric-custom {
 .ms-Callout {
   @include ms-baseFont;
   width: 288px;
@@ -153,4 +154,6 @@ $ms-Callout-commandButtonHeight: 27px;
     margin-top: 12px;
     margin-bottom: -4px;
   }
+}
+
 }

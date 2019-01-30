@@ -5,7 +5,7 @@
 // --------------------------------------------------
 // Breadcrumb styles
 
-
+.fabric-custom {
 .ms-Breadcrumb {
   @include ms-baseFont;
   margin: 23px 0 1px;
@@ -171,4 +171,5 @@
       padding: 2px 4px;
     }
   }
+}
 }

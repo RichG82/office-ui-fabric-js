@@ -5,7 +5,7 @@
 // --------------------------------------------------
 // Pivot and tab styles
 
-
+.fabric-custom {
 .ms-Pivot {
   @include ms-baseFont;
   @include ms-u-normalize;
@@ -197,4 +197,6 @@
       }
     }
   }
+}
+
 }

@@ -5,7 +5,7 @@
 // --------------------------------------------------
 // Button styles
 
-
+.fabric-custom {
 .ms-Button {
   @include ms-u-normalize;
   @include ms-baseFont;
@@ -296,4 +296,5 @@
       }
     }
   }
+}
 }

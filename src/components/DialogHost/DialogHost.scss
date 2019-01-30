@@ -1,3 +1,4 @@
+.fabric-custom {
 .ms-DialogHost {
   @include ms-baseFont;
   @include drop-shadow;
@@ -8,4 +9,5 @@
   position: relative;
   text-align: left;
   outline: 1px solid transparent;
+}
 }

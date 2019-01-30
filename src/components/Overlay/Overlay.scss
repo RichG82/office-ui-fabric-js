@@ -5,7 +5,7 @@
 // --------------------------------------------------
 // Modal overlay styles
 
-
+.fabric-custom {
 .ms-Overlay {
   @include ms-baseFont;
   background-color: $ms-color-whiteTranslucent40;
@@ -30,4 +30,6 @@
 
 .ms-u-overflowHidden {
   overflow: hidden;
+}
+
 }

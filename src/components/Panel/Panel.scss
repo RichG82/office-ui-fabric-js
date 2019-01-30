@@ -17,6 +17,7 @@ $ms-panel-margin-xl: 176px;
 
 $ms-panel-close-button-height: 40px;
 
+.fabric-custom {
 // The panel itself, where the content goes.
 .ms-Panel {
   @include ms-baseFont;
@@ -151,4 +152,6 @@ $ms-panel-close-button-height: 40px;
   @media (min-width: $ms-screen-xl-min) {
     margin-top: 30px;
   }
+}
+
 }

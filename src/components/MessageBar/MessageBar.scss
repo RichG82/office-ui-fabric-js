@@ -7,6 +7,7 @@
 
 $MessageBar-padding: 8px;
 
+.fabric-custom {
 .ms-MessageBar {
   @include ms-baseFont;
   padding: $MessageBar-padding;
@@ -84,3 +85,6 @@ $MessageBar-padding: 8px;
     @include ms-fontColor-green;
   }
 }
+
+}
+

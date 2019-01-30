@@ -5,7 +5,7 @@
 // --------------------------------------------------
 // Date Picker styles
 
-
+.fabric-custom {
 .ms-DatePicker {
   @include ms-baseFont;
   @include ms-u-normalize;
@@ -523,4 +523,5 @@
       display: block;
     }
   }
+}
 }

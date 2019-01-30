@@ -5,7 +5,7 @@
 // --------------------------------------------------
 // Org chart styles
 
-
+.fabric-custom {
 .ms-OrgChart {
   @include ms-baseFont;
   @include ms-u-normalize;
@@ -42,4 +42,6 @@
   text-align: left;
   margin: 0;
   padding: 0;
+}
+
 }
