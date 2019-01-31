@@ -336,6 +336,7 @@ var fabric;
 })();
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+"use strict";
 /**
  * @namespace fabric
  */
@@ -575,9 +576,10 @@ var fabric;
         return Breadcrumb;
     }());
     fabric.Breadcrumb = Breadcrumb;
-})(fabric || (fabric = {})); // end fabric namespace
+})(fabric = exports.fabric || (exports.fabric = {})); // end fabric namespace
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+"use strict";
 /**
  * Button
  *
@@ -604,7 +606,7 @@ var fabric;
         return Button;
     }());
     fabric.Button = Button;
-})(fabric || (fabric = {}));
+})(fabric = exports.fabric || (exports.fabric = {}));
 
 
 
@@ -1016,6 +1018,249 @@ var fabric;
         return Callout;
     }());
     fabric.Callout = Callout;
+})(fabric || (fabric = {}));
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+"use strict";
+var fabric;
+(function (fabric) {
+    /**
+     * CheckBox Plugin
+     *
+     * Adds basic demonstration functionality to .ms-CheckBox components.
+     *
+     */
+    var CheckBox = (function () {
+        /**
+         *
+         * @param {HTMLElement} container - the target container for an instance of CheckBox
+         * @constructor
+         */
+        function CheckBox(container) {
+            this._container = container;
+            this._choiceField = this._container.querySelector(".ms-CheckBox-field");
+            this._choiceInput = this._container.querySelector(".ms-CheckBox-input");
+            if (this._choiceInput.checked) {
+                this._choiceField.setAttribute("aria-checked", "true");
+            }
+            if (this._choiceField.getAttribute("aria-checked") === "true") {
+                this._choiceField.classList.add("is-checked");
+            }
+            this._addListeners();
+        }
+        CheckBox.prototype.getValue = function () {
+            return this._choiceField.getAttribute("aria-checked") === "true" ? true : false;
+        };
+        CheckBox.prototype.toggle = function () {
+            if (this.getValue()) {
+                this.unCheck();
+            }
+            else {
+                this.check();
+            }
+            this._choiceInput.click();
+        };
+        CheckBox.prototype.check = function () {
+            this._choiceField.setAttribute("aria-checked", "true");
+            this._choiceField.classList.add("is-checked");
+        };
+        CheckBox.prototype.unCheck = function () {
+            this._choiceField.setAttribute("aria-checked", "false");
+            this._choiceField.classList.remove("is-checked");
+        };
+        CheckBox.prototype.removeListeners = function () {
+            this._choiceField.removeEventListener("focus", this._FocusHandler.bind(this));
+            this._choiceField.removeEventListener("blur", this._BlurHandler.bind(this));
+            this._choiceField.removeEventListener("click", this._ClickHandler.bind(this));
+            this._choiceField.removeEventListener("keydown", this._KeydownHandler.bind(this));
+        };
+        CheckBox.prototype._addListeners = function (events) {
+            var ignore = events && events.ignore;
+            if (!ignore || !(ignore.indexOf("focus") > -1)) {
+                this._choiceField.addEventListener("focus", this._FocusHandler.bind(this), false);
+            }
+            if (!ignore || !(ignore.indexOf("blur") > -1)) {
+                this._choiceField.addEventListener("blur", this._BlurHandler.bind(this), false);
+            }
+            if (!ignore || !(ignore.indexOf("click") > -1)) {
+                this._choiceField.addEventListener("click", this._ClickHandler.bind(this), false);
+            }
+            if (!ignore || !(ignore.indexOf("keydown") > -1)) {
+                this._choiceField.addEventListener("keydown", this._KeydownHandler.bind(this), false);
+            }
+        };
+        CheckBox.prototype._FocusHandler = function () {
+            this._choiceField.classList.add("in-focus");
+        };
+        CheckBox.prototype._BlurHandler = function () {
+            this._choiceField.classList.remove("in-focus");
+        };
+        CheckBox.prototype._ClickHandler = function (event) {
+            event.stopPropagation();
+            event.preventDefault();
+            if (!this._choiceField.classList.contains("is-disabled")) {
+                this.toggle();
+            }
+        };
+        CheckBox.prototype._KeydownHandler = function (event) {
+            if (event.keyCode === 32) {
+                event.stopPropagation();
+                event.preventDefault();
+                if (!this._choiceField.classList.contains("is-disabled")) {
+                    this.toggle();
+                }
+            }
+        };
+        return CheckBox;
+    }());
+    fabric.CheckBox = CheckBox;
+})(fabric || (fabric = {}));
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+/// <reference path="../CheckBox/CheckBox.ts"/>
+"use strict";
+var fabric;
+(function (fabric) {
+    /**
+     * RadioButton Plugin
+     *
+     * Adds basic demonstration functionality to .ms-RadioButton components.
+     *
+     */
+    var RadioButton = (function () {
+        /**
+         *
+         * @param {HTMLElement} container - the target container for an instance of RadioButton
+         * @constructor
+         */
+        function RadioButton(container) {
+            this._container = container;
+            this._choiceField = this._container.querySelector(".ms-RadioButton-field");
+            this._choiceInput = this._container.querySelector(".ms-RadioButton-input");
+            if (this._choiceField.getAttribute("aria-checked") === "true") {
+                this._choiceField.classList.add("is-checked");
+            }
+            this._addListeners();
+        }
+        RadioButton.prototype.getValue = function () {
+            return this._choiceField.getAttribute("aria-checked") === "true" ? true : false;
+        };
+        RadioButton.prototype.toggle = function () {
+            if (this.getValue()) {
+                this.unCheck();
+            }
+            else {
+                this.check();
+            }
+        };
+        RadioButton.prototype.check = function () {
+            this._choiceField.setAttribute("aria-checked", "true");
+            this._choiceField.classList.add("is-checked");
+            this._choiceInput.checked = true;
+        };
+        RadioButton.prototype.unCheck = function () {
+            this._choiceField.setAttribute("aria-checked", "false");
+            this._choiceField.classList.remove("is-checked");
+            this._choiceInput.checked = false;
+        };
+        RadioButton.prototype.removeListeners = function () {
+            this._choiceField.removeEventListener("focus", this._FocusHandler.bind(this));
+            this._choiceField.removeEventListener("blur", this._BlurHandler.bind(this));
+            this._choiceField.removeEventListener("click", this._RadioClickHandler.bind(this));
+            this._choiceField.addEventListener("keydown", this._RadioKeydownHandler.bind(this));
+        };
+        RadioButton.prototype._addListeners = function () {
+            this._choiceField.addEventListener("focus", this._FocusHandler.bind(this), false);
+            this._choiceField.addEventListener("blur", this._BlurHandler.bind(this), false);
+            this._choiceField.addEventListener("click", this._RadioClickHandler.bind(this), false);
+            this._choiceField.addEventListener("keydown", this._RadioKeydownHandler.bind(this), false);
+        };
+        RadioButton.prototype._RadioClickHandler = function (event) {
+            event.stopPropagation();
+            event.preventDefault();
+            if (!this._choiceField.classList.contains("is-disabled")) {
+                this._dispatchSelectEvent();
+            }
+        };
+        RadioButton.prototype._dispatchSelectEvent = function () {
+            var objDict = {
+                bubbles: true,
+                cancelable: true,
+                detail: {
+                    name: this._choiceField.getAttribute("name"),
+                    item: this
+                }
+            };
+            this._choiceField.dispatchEvent(new CustomEvent("msChoicefield", objDict));
+        };
+        RadioButton.prototype._RadioKeydownHandler = function (event) {
+            if (event.keyCode === 32) {
+                event.stopPropagation();
+                event.preventDefault();
+                if (!this._choiceField.classList.contains("is-disabled")) {
+                    this._dispatchSelectEvent();
+                }
+            }
+        };
+        RadioButton.prototype._FocusHandler = function () {
+            this._choiceField.classList.add("in-focus");
+        };
+        RadioButton.prototype._BlurHandler = function () {
+            this._choiceField.classList.remove("in-focus");
+        };
+        return RadioButton;
+    }());
+    fabric.RadioButton = RadioButton;
+})(fabric || (fabric = {}));
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+/// <reference path="../RadioButton/RadioButton.ts"/>
+"use strict";
+var fabric;
+(function (fabric) {
+    /**
+     * ChoiceFieldGroup Plugin
+     *
+     * Adds basic demonstration functionality to .ms-ChoiceFieldGroup components.
+     *
+    */
+    var ChoiceFieldGroup = (function () {
+        /**
+         *
+         * @param {HTMLElement} container - the target container for an instance of ChoiceFieldGroup
+         * @constructor
+         */
+        function ChoiceFieldGroup(container) {
+            this._choiceFieldGroup = container;
+            this._choiceFieldComponents = [];
+            this._initalSetup();
+            this._addListeners();
+        }
+        ChoiceFieldGroup.prototype.removeListeners = function () {
+            this._choiceFieldGroup.removeEventListener("msChoicefield", this._ChoiceFieldHandler.bind(this));
+        };
+        ChoiceFieldGroup.prototype._initalSetup = function () {
+            var choiceFieldElements = this._choiceFieldGroup.querySelectorAll(".ms-RadioButton");
+            for (var i = 0; i < choiceFieldElements.length; i++) {
+                this._choiceFieldComponents[i] = new fabric.RadioButton(choiceFieldElements[i]);
+            }
+        };
+        ChoiceFieldGroup.prototype._addListeners = function () {
+            document.addEventListener("msChoicefield", this._ChoiceFieldHandler.bind(this), false);
+        };
+        ChoiceFieldGroup.prototype._ChoiceFieldHandler = function (event) {
+            var name = event.detail.name;
+            var selectedChoice = event.detail.item;
+            if (this._choiceFieldGroup.id === name) {
+                for (var i = 0; i < this._choiceFieldComponents.length; i++) {
+                    this._choiceFieldComponents[i].unCheck();
+                }
+                selectedChoice.check();
+            }
+        };
+        return ChoiceFieldGroup;
+    }());
+    fabric.ChoiceFieldGroup = ChoiceFieldGroup;
 })(fabric || (fabric = {}));
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
@@ -1589,249 +1834,6 @@ var fabric;
         return CommandBar;
     }());
     fabric.CommandBar = CommandBar;
-})(fabric || (fabric = {}));
-
-// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
-"use strict";
-var fabric;
-(function (fabric) {
-    /**
-     * CheckBox Plugin
-     *
-     * Adds basic demonstration functionality to .ms-CheckBox components.
-     *
-     */
-    var CheckBox = (function () {
-        /**
-         *
-         * @param {HTMLElement} container - the target container for an instance of CheckBox
-         * @constructor
-         */
-        function CheckBox(container) {
-            this._container = container;
-            this._choiceField = this._container.querySelector(".ms-CheckBox-field");
-            this._choiceInput = this._container.querySelector(".ms-CheckBox-input");
-            if (this._choiceInput.checked) {
-                this._choiceField.setAttribute("aria-checked", "true");
-            }
-            if (this._choiceField.getAttribute("aria-checked") === "true") {
-                this._choiceField.classList.add("is-checked");
-            }
-            this._addListeners();
-        }
-        CheckBox.prototype.getValue = function () {
-            return this._choiceField.getAttribute("aria-checked") === "true" ? true : false;
-        };
-        CheckBox.prototype.toggle = function () {
-            if (this.getValue()) {
-                this.unCheck();
-            }
-            else {
-                this.check();
-            }
-            this._choiceInput.click();
-        };
-        CheckBox.prototype.check = function () {
-            this._choiceField.setAttribute("aria-checked", "true");
-            this._choiceField.classList.add("is-checked");
-        };
-        CheckBox.prototype.unCheck = function () {
-            this._choiceField.setAttribute("aria-checked", "false");
-            this._choiceField.classList.remove("is-checked");
-        };
-        CheckBox.prototype.removeListeners = function () {
-            this._choiceField.removeEventListener("focus", this._FocusHandler.bind(this));
-            this._choiceField.removeEventListener("blur", this._BlurHandler.bind(this));
-            this._choiceField.removeEventListener("click", this._ClickHandler.bind(this));
-            this._choiceField.removeEventListener("keydown", this._KeydownHandler.bind(this));
-        };
-        CheckBox.prototype._addListeners = function (events) {
-            var ignore = events && events.ignore;
-            if (!ignore || !(ignore.indexOf("focus") > -1)) {
-                this._choiceField.addEventListener("focus", this._FocusHandler.bind(this), false);
-            }
-            if (!ignore || !(ignore.indexOf("blur") > -1)) {
-                this._choiceField.addEventListener("blur", this._BlurHandler.bind(this), false);
-            }
-            if (!ignore || !(ignore.indexOf("click") > -1)) {
-                this._choiceField.addEventListener("click", this._ClickHandler.bind(this), false);
-            }
-            if (!ignore || !(ignore.indexOf("keydown") > -1)) {
-                this._choiceField.addEventListener("keydown", this._KeydownHandler.bind(this), false);
-            }
-        };
-        CheckBox.prototype._FocusHandler = function () {
-            this._choiceField.classList.add("in-focus");
-        };
-        CheckBox.prototype._BlurHandler = function () {
-            this._choiceField.classList.remove("in-focus");
-        };
-        CheckBox.prototype._ClickHandler = function (event) {
-            event.stopPropagation();
-            event.preventDefault();
-            if (!this._choiceField.classList.contains("is-disabled")) {
-                this.toggle();
-            }
-        };
-        CheckBox.prototype._KeydownHandler = function (event) {
-            if (event.keyCode === 32) {
-                event.stopPropagation();
-                event.preventDefault();
-                if (!this._choiceField.classList.contains("is-disabled")) {
-                    this.toggle();
-                }
-            }
-        };
-        return CheckBox;
-    }());
-    fabric.CheckBox = CheckBox;
-})(fabric || (fabric = {}));
-
-// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
-/// <reference path="../CheckBox/CheckBox.ts"/>
-"use strict";
-var fabric;
-(function (fabric) {
-    /**
-     * RadioButton Plugin
-     *
-     * Adds basic demonstration functionality to .ms-RadioButton components.
-     *
-     */
-    var RadioButton = (function () {
-        /**
-         *
-         * @param {HTMLElement} container - the target container for an instance of RadioButton
-         * @constructor
-         */
-        function RadioButton(container) {
-            this._container = container;
-            this._choiceField = this._container.querySelector(".ms-RadioButton-field");
-            this._choiceInput = this._container.querySelector(".ms-RadioButton-input");
-            if (this._choiceField.getAttribute("aria-checked") === "true") {
-                this._choiceField.classList.add("is-checked");
-            }
-            this._addListeners();
-        }
-        RadioButton.prototype.getValue = function () {
-            return this._choiceField.getAttribute("aria-checked") === "true" ? true : false;
-        };
-        RadioButton.prototype.toggle = function () {
-            if (this.getValue()) {
-                this.unCheck();
-            }
-            else {
-                this.check();
-            }
-        };
-        RadioButton.prototype.check = function () {
-            this._choiceField.setAttribute("aria-checked", "true");
-            this._choiceField.classList.add("is-checked");
-            this._choiceInput.checked = true;
-        };
-        RadioButton.prototype.unCheck = function () {
-            this._choiceField.setAttribute("aria-checked", "false");
-            this._choiceField.classList.remove("is-checked");
-            this._choiceInput.checked = false;
-        };
-        RadioButton.prototype.removeListeners = function () {
-            this._choiceField.removeEventListener("focus", this._FocusHandler.bind(this));
-            this._choiceField.removeEventListener("blur", this._BlurHandler.bind(this));
-            this._choiceField.removeEventListener("click", this._RadioClickHandler.bind(this));
-            this._choiceField.addEventListener("keydown", this._RadioKeydownHandler.bind(this));
-        };
-        RadioButton.prototype._addListeners = function () {
-            this._choiceField.addEventListener("focus", this._FocusHandler.bind(this), false);
-            this._choiceField.addEventListener("blur", this._BlurHandler.bind(this), false);
-            this._choiceField.addEventListener("click", this._RadioClickHandler.bind(this), false);
-            this._choiceField.addEventListener("keydown", this._RadioKeydownHandler.bind(this), false);
-        };
-        RadioButton.prototype._RadioClickHandler = function (event) {
-            event.stopPropagation();
-            event.preventDefault();
-            if (!this._choiceField.classList.contains("is-disabled")) {
-                this._dispatchSelectEvent();
-            }
-        };
-        RadioButton.prototype._dispatchSelectEvent = function () {
-            var objDict = {
-                bubbles: true,
-                cancelable: true,
-                detail: {
-                    name: this._choiceField.getAttribute("name"),
-                    item: this
-                }
-            };
-            this._choiceField.dispatchEvent(new CustomEvent("msChoicefield", objDict));
-        };
-        RadioButton.prototype._RadioKeydownHandler = function (event) {
-            if (event.keyCode === 32) {
-                event.stopPropagation();
-                event.preventDefault();
-                if (!this._choiceField.classList.contains("is-disabled")) {
-                    this._dispatchSelectEvent();
-                }
-            }
-        };
-        RadioButton.prototype._FocusHandler = function () {
-            this._choiceField.classList.add("in-focus");
-        };
-        RadioButton.prototype._BlurHandler = function () {
-            this._choiceField.classList.remove("in-focus");
-        };
-        return RadioButton;
-    }());
-    fabric.RadioButton = RadioButton;
-})(fabric || (fabric = {}));
-
-// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
-/// <reference path="../RadioButton/RadioButton.ts"/>
-"use strict";
-var fabric;
-(function (fabric) {
-    /**
-     * ChoiceFieldGroup Plugin
-     *
-     * Adds basic demonstration functionality to .ms-ChoiceFieldGroup components.
-     *
-    */
-    var ChoiceFieldGroup = (function () {
-        /**
-         *
-         * @param {HTMLElement} container - the target container for an instance of ChoiceFieldGroup
-         * @constructor
-         */
-        function ChoiceFieldGroup(container) {
-            this._choiceFieldGroup = container;
-            this._choiceFieldComponents = [];
-            this._initalSetup();
-            this._addListeners();
-        }
-        ChoiceFieldGroup.prototype.removeListeners = function () {
-            this._choiceFieldGroup.removeEventListener("msChoicefield", this._ChoiceFieldHandler.bind(this));
-        };
-        ChoiceFieldGroup.prototype._initalSetup = function () {
-            var choiceFieldElements = this._choiceFieldGroup.querySelectorAll(".ms-RadioButton");
-            for (var i = 0; i < choiceFieldElements.length; i++) {
-                this._choiceFieldComponents[i] = new fabric.RadioButton(choiceFieldElements[i]);
-            }
-        };
-        ChoiceFieldGroup.prototype._addListeners = function () {
-            document.addEventListener("msChoicefield", this._ChoiceFieldHandler.bind(this), false);
-        };
-        ChoiceFieldGroup.prototype._ChoiceFieldHandler = function (event) {
-            var name = event.detail.name;
-            var selectedChoice = event.detail.item;
-            if (this._choiceFieldGroup.id === name) {
-                for (var i = 0; i < this._choiceFieldComponents.length; i++) {
-                    this._choiceFieldComponents[i].unCheck();
-                }
-                selectedChoice.check();
-            }
-        };
-        return ChoiceFieldGroup;
-    }());
-    fabric.ChoiceFieldGroup = ChoiceFieldGroup;
 })(fabric || (fabric = {}));
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
@@ -3525,6 +3527,43 @@ var fabric;
 "use strict";
 var fabric;
 (function (fabric) {
+    /**
+     * Toggle Plugin
+     *
+     * Adds basic demonstration functionality to .ms-Toggle components.
+     *
+     */
+    var Toggle = (function () {
+        /**
+         *
+         * @param {HTMLElement} container - the target container for an instance of Toggle
+         * @constructor
+         */
+        function Toggle(container) {
+            this._container = container;
+            this._toggleField = this._container.querySelector(".ms-Toggle-field");
+            this._addListeners();
+        }
+        Toggle.prototype.removeListeners = function () {
+            this._toggleField.removeEventListener("click", this._toggleHandler.bind(this));
+        };
+        Toggle.prototype._addListeners = function () {
+            var _this = this;
+            this._toggleField.addEventListener("click", this._toggleHandler.bind(this), false);
+            this._toggleField.addEventListener("keyup", function (e) { return (e.keyCode === 32) ? _this._toggleHandler() : null; }, false);
+        };
+        Toggle.prototype._toggleHandler = function () {
+            this._toggleField.classList.toggle("is-selected");
+        };
+        return Toggle;
+    }());
+    fabric.Toggle = Toggle;
+})(fabric || (fabric = {}));
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+"use strict";
+var fabric;
+(function (fabric) {
     var TextFieldConsts;
     (function (TextFieldConsts) {
         (function (Type) {
@@ -3593,41 +3632,4 @@ var fabric;
         return TextField;
     }());
     fabric.TextField = TextField;
-})(fabric || (fabric = {}));
-
-// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
-"use strict";
-var fabric;
-(function (fabric) {
-    /**
-     * Toggle Plugin
-     *
-     * Adds basic demonstration functionality to .ms-Toggle components.
-     *
-     */
-    var Toggle = (function () {
-        /**
-         *
-         * @param {HTMLElement} container - the target container for an instance of Toggle
-         * @constructor
-         */
-        function Toggle(container) {
-            this._container = container;
-            this._toggleField = this._container.querySelector(".ms-Toggle-field");
-            this._addListeners();
-        }
-        Toggle.prototype.removeListeners = function () {
-            this._toggleField.removeEventListener("click", this._toggleHandler.bind(this));
-        };
-        Toggle.prototype._addListeners = function () {
-            var _this = this;
-            this._toggleField.addEventListener("click", this._toggleHandler.bind(this), false);
-            this._toggleField.addEventListener("keyup", function (e) { return (e.keyCode === 32) ? _this._toggleHandler() : null; }, false);
-        };
-        Toggle.prototype._toggleHandler = function () {
-            this._toggleField.classList.toggle("is-selected");
-        };
-        return Toggle;
-    }());
-    fabric.Toggle = Toggle;
 })(fabric || (fabric = {}));

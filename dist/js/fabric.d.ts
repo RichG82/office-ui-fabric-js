@@ -101,7 +101,7 @@ interface Window {
 /**
  * @namespace fabric
  */
-declare namespace fabric {
+export declare namespace fabric {
     /**
      * Breadcrumb component
      *
@@ -209,7 +209,7 @@ declare namespace fabric {
  * Mostly just a click handler
  *
  */
-declare namespace fabric {
+export declare namespace fabric {
     class Button {
         private _container;
         private _clickHandler;
@@ -307,6 +307,92 @@ declare namespace fabric {
         private _closeHandler(e);
         private _clickHandler(e);
         private _keyupHandler(event);
+    }
+}
+
+declare namespace fabric {
+    /**
+     * CheckBox Plugin
+     *
+     * Adds basic demonstration functionality to .ms-CheckBox components.
+     *
+     */
+    class CheckBox {
+        protected _choiceField: HTMLElement;
+        protected _choiceInput: HTMLInputElement;
+        private _container;
+        /**
+         *
+         * @param {HTMLElement} container - the target container for an instance of CheckBox
+         * @constructor
+         */
+        constructor(container: HTMLElement);
+        getValue(): boolean;
+        toggle(): void;
+        check(): void;
+        unCheck(): void;
+        removeListeners(): void;
+        protected _addListeners(events?: any): void;
+        private _FocusHandler();
+        private _BlurHandler();
+        private _ClickHandler(event);
+        private _KeydownHandler(event);
+    }
+}
+
+/// <reference path="../CheckBox/CheckBox.d.ts" />
+declare namespace fabric {
+    /**
+     * RadioButton Plugin
+     *
+     * Adds basic demonstration functionality to .ms-RadioButton components.
+     *
+     */
+    class RadioButton {
+        protected _choiceField: HTMLElement;
+        protected _choiceInput: HTMLInputElement;
+        private _container;
+        /**
+         *
+         * @param {HTMLElement} container - the target container for an instance of RadioButton
+         * @constructor
+         */
+        constructor(container: HTMLElement);
+        getValue(): boolean;
+        toggle(): void;
+        check(): void;
+        unCheck(): void;
+        removeListeners(): void;
+        protected _addListeners(): void;
+        private _RadioClickHandler(event);
+        private _dispatchSelectEvent();
+        private _RadioKeydownHandler(event);
+        private _FocusHandler();
+        private _BlurHandler();
+    }
+}
+
+/// <reference path="../RadioButton/RadioButton.d.ts" />
+declare namespace fabric {
+    /**
+     * ChoiceFieldGroup Plugin
+     *
+     * Adds basic demonstration functionality to .ms-ChoiceFieldGroup components.
+     *
+    */
+    class ChoiceFieldGroup {
+        private _choiceFieldGroup;
+        private _choiceFieldComponents;
+        /**
+         *
+         * @param {HTMLElement} container - the target container for an instance of ChoiceFieldGroup
+         * @constructor
+         */
+        constructor(container: HTMLElement);
+        removeListeners(): void;
+        private _initalSetup();
+        private _addListeners();
+        private _ChoiceFieldHandler(event);
     }
 }
 
@@ -429,92 +515,6 @@ declare namespace fabric {
         private _redrawMenu();
         private _drawOverflowMenu(left);
         private _doResize();
-    }
-}
-
-declare namespace fabric {
-    /**
-     * CheckBox Plugin
-     *
-     * Adds basic demonstration functionality to .ms-CheckBox components.
-     *
-     */
-    class CheckBox {
-        protected _choiceField: HTMLElement;
-        protected _choiceInput: HTMLInputElement;
-        private _container;
-        /**
-         *
-         * @param {HTMLElement} container - the target container for an instance of CheckBox
-         * @constructor
-         */
-        constructor(container: HTMLElement);
-        getValue(): boolean;
-        toggle(): void;
-        check(): void;
-        unCheck(): void;
-        removeListeners(): void;
-        protected _addListeners(events?: any): void;
-        private _FocusHandler();
-        private _BlurHandler();
-        private _ClickHandler(event);
-        private _KeydownHandler(event);
-    }
-}
-
-/// <reference path="../CheckBox/CheckBox.d.ts" />
-declare namespace fabric {
-    /**
-     * RadioButton Plugin
-     *
-     * Adds basic demonstration functionality to .ms-RadioButton components.
-     *
-     */
-    class RadioButton {
-        protected _choiceField: HTMLElement;
-        protected _choiceInput: HTMLInputElement;
-        private _container;
-        /**
-         *
-         * @param {HTMLElement} container - the target container for an instance of RadioButton
-         * @constructor
-         */
-        constructor(container: HTMLElement);
-        getValue(): boolean;
-        toggle(): void;
-        check(): void;
-        unCheck(): void;
-        removeListeners(): void;
-        protected _addListeners(): void;
-        private _RadioClickHandler(event);
-        private _dispatchSelectEvent();
-        private _RadioKeydownHandler(event);
-        private _FocusHandler();
-        private _BlurHandler();
-    }
-}
-
-/// <reference path="../RadioButton/RadioButton.d.ts" />
-declare namespace fabric {
-    /**
-     * ChoiceFieldGroup Plugin
-     *
-     * Adds basic demonstration functionality to .ms-ChoiceFieldGroup components.
-     *
-    */
-    class ChoiceFieldGroup {
-        private _choiceFieldGroup;
-        private _choiceFieldComponents;
-        /**
-         *
-         * @param {HTMLElement} container - the target container for an instance of ChoiceFieldGroup
-         * @constructor
-         */
-        constructor(container: HTMLElement);
-        removeListeners(): void;
-        private _initalSetup();
-        private _addListeners();
-        private _ChoiceFieldHandler(event);
     }
 }
 
@@ -1073,6 +1073,28 @@ declare namespace fabric {
 
 declare namespace fabric {
     /**
+     * Toggle Plugin
+     *
+     * Adds basic demonstration functionality to .ms-Toggle components.
+     *
+     */
+    class Toggle {
+        private _container;
+        private _toggleField;
+        /**
+         *
+         * @param {HTMLElement} container - the target container for an instance of Toggle
+         * @constructor
+         */
+        constructor(container: HTMLElement);
+        removeListeners(): void;
+        private _addListeners();
+        private _toggleHandler();
+    }
+}
+
+declare namespace fabric {
+    /**
      * Text Field Plugin
      *
      * Adds basic demonstration functionality to .ms-TextField components.
@@ -1092,27 +1114,5 @@ declare namespace fabric {
         private _setTextFieldType();
         /** Add event listeners according to the type(s) of text field */
         private _addListeners();
-    }
-}
-
-declare namespace fabric {
-    /**
-     * Toggle Plugin
-     *
-     * Adds basic demonstration functionality to .ms-Toggle components.
-     *
-     */
-    class Toggle {
-        private _container;
-        private _toggleField;
-        /**
-         *
-         * @param {HTMLElement} container - the target container for an instance of Toggle
-         * @constructor
-         */
-        constructor(container: HTMLElement);
-        removeListeners(): void;
-        private _addListeners();
-        private _toggleHandler();
     }
 }
