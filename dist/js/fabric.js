@@ -336,7 +336,6 @@ var fabric;
 })();
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
-"use strict";
 /**
  * @namespace fabric
  */
@@ -576,10 +575,9 @@ var fabric;
         return Breadcrumb;
     }());
     fabric.Breadcrumb = Breadcrumb;
-})(fabric = exports.fabric || (exports.fabric = {})); // end fabric namespace
+})(fabric || (fabric = {})); // end fabric namespace
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
-"use strict";
 /**
  * Button
  *
@@ -606,7 +604,7 @@ var fabric;
         return Button;
     }());
     fabric.Button = Button;
-})(fabric = exports.fabric || (exports.fabric = {}));
+})(fabric || (fabric = {}));
 
 
 
@@ -3527,43 +3525,6 @@ var fabric;
 "use strict";
 var fabric;
 (function (fabric) {
-    /**
-     * Toggle Plugin
-     *
-     * Adds basic demonstration functionality to .ms-Toggle components.
-     *
-     */
-    var Toggle = (function () {
-        /**
-         *
-         * @param {HTMLElement} container - the target container for an instance of Toggle
-         * @constructor
-         */
-        function Toggle(container) {
-            this._container = container;
-            this._toggleField = this._container.querySelector(".ms-Toggle-field");
-            this._addListeners();
-        }
-        Toggle.prototype.removeListeners = function () {
-            this._toggleField.removeEventListener("click", this._toggleHandler.bind(this));
-        };
-        Toggle.prototype._addListeners = function () {
-            var _this = this;
-            this._toggleField.addEventListener("click", this._toggleHandler.bind(this), false);
-            this._toggleField.addEventListener("keyup", function (e) { return (e.keyCode === 32) ? _this._toggleHandler() : null; }, false);
-        };
-        Toggle.prototype._toggleHandler = function () {
-            this._toggleField.classList.toggle("is-selected");
-        };
-        return Toggle;
-    }());
-    fabric.Toggle = Toggle;
-})(fabric || (fabric = {}));
-
-// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
-"use strict";
-var fabric;
-(function (fabric) {
     var TextFieldConsts;
     (function (TextFieldConsts) {
         (function (Type) {
@@ -3632,4 +3593,41 @@ var fabric;
         return TextField;
     }());
     fabric.TextField = TextField;
+})(fabric || (fabric = {}));
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+"use strict";
+var fabric;
+(function (fabric) {
+    /**
+     * Toggle Plugin
+     *
+     * Adds basic demonstration functionality to .ms-Toggle components.
+     *
+     */
+    var Toggle = (function () {
+        /**
+         *
+         * @param {HTMLElement} container - the target container for an instance of Toggle
+         * @constructor
+         */
+        function Toggle(container) {
+            this._container = container;
+            this._toggleField = this._container.querySelector(".ms-Toggle-field");
+            this._addListeners();
+        }
+        Toggle.prototype.removeListeners = function () {
+            this._toggleField.removeEventListener("click", this._toggleHandler.bind(this));
+        };
+        Toggle.prototype._addListeners = function () {
+            var _this = this;
+            this._toggleField.addEventListener("click", this._toggleHandler.bind(this), false);
+            this._toggleField.addEventListener("keyup", function (e) { return (e.keyCode === 32) ? _this._toggleHandler() : null; }, false);
+        };
+        Toggle.prototype._toggleHandler = function () {
+            this._toggleField.classList.toggle("is-selected");
+        };
+        return Toggle;
+    }());
+    fabric.Toggle = Toggle;
 })(fabric || (fabric = {}));

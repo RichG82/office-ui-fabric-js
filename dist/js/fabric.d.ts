@@ -101,7 +101,7 @@ interface Window {
 /**
  * @namespace fabric
  */
-export declare namespace fabric {
+declare namespace fabric {
     /**
      * Breadcrumb component
      *
@@ -209,7 +209,7 @@ export declare namespace fabric {
  * Mostly just a click handler
  *
  */
-export declare namespace fabric {
+declare namespace fabric {
     class Button {
         private _container;
         private _clickHandler;
@@ -1073,28 +1073,6 @@ declare namespace fabric {
 
 declare namespace fabric {
     /**
-     * Toggle Plugin
-     *
-     * Adds basic demonstration functionality to .ms-Toggle components.
-     *
-     */
-    class Toggle {
-        private _container;
-        private _toggleField;
-        /**
-         *
-         * @param {HTMLElement} container - the target container for an instance of Toggle
-         * @constructor
-         */
-        constructor(container: HTMLElement);
-        removeListeners(): void;
-        private _addListeners();
-        private _toggleHandler();
-    }
-}
-
-declare namespace fabric {
-    /**
      * Text Field Plugin
      *
      * Adds basic demonstration functionality to .ms-TextField components.
@@ -1114,5 +1092,27 @@ declare namespace fabric {
         private _setTextFieldType();
         /** Add event listeners according to the type(s) of text field */
         private _addListeners();
+    }
+}
+
+declare namespace fabric {
+    /**
+     * Toggle Plugin
+     *
+     * Adds basic demonstration functionality to .ms-Toggle components.
+     *
+     */
+    class Toggle {
+        private _container;
+        private _toggleField;
+        /**
+         *
+         * @param {HTMLElement} container - the target container for an instance of Toggle
+         * @constructor
+         */
+        constructor(container: HTMLElement);
+        removeListeners(): void;
+        private _addListeners();
+        private _toggleHandler();
     }
 }
