@@ -340,62 +340,6 @@ declare namespace fabric {
     }
 }
 
-/// <reference path="../CheckBox/CheckBox.d.ts" />
-declare namespace fabric {
-    /**
-     * RadioButton Plugin
-     *
-     * Adds basic demonstration functionality to .ms-RadioButton components.
-     *
-     */
-    class RadioButton {
-        protected _choiceField: HTMLElement;
-        protected _choiceInput: HTMLInputElement;
-        private _container;
-        /**
-         *
-         * @param {HTMLElement} container - the target container for an instance of RadioButton
-         * @constructor
-         */
-        constructor(container: HTMLElement);
-        getValue(): boolean;
-        toggle(): void;
-        check(): void;
-        unCheck(): void;
-        removeListeners(): void;
-        protected _addListeners(): void;
-        private _RadioClickHandler(event);
-        private _dispatchSelectEvent();
-        private _RadioKeydownHandler(event);
-        private _FocusHandler();
-        private _BlurHandler();
-    }
-}
-
-/// <reference path="../RadioButton/RadioButton.d.ts" />
-declare namespace fabric {
-    /**
-     * ChoiceFieldGroup Plugin
-     *
-     * Adds basic demonstration functionality to .ms-ChoiceFieldGroup components.
-     *
-    */
-    class ChoiceFieldGroup {
-        private _choiceFieldGroup;
-        private _choiceFieldComponents;
-        /**
-         *
-         * @param {HTMLElement} container - the target container for an instance of ChoiceFieldGroup
-         * @constructor
-         */
-        constructor(container: HTMLElement);
-        removeListeners(): void;
-        private _initalSetup();
-        private _addListeners();
-        private _ChoiceFieldHandler(event);
-    }
-}
-
 /**
  * SearchBox component
  *
@@ -518,6 +462,62 @@ declare namespace fabric {
     }
 }
 
+/// <reference path="../CheckBox/CheckBox.d.ts" />
+declare namespace fabric {
+    /**
+     * RadioButton Plugin
+     *
+     * Adds basic demonstration functionality to .ms-RadioButton components.
+     *
+     */
+    class RadioButton {
+        protected _choiceField: HTMLElement;
+        protected _choiceInput: HTMLInputElement;
+        private _container;
+        /**
+         *
+         * @param {HTMLElement} container - the target container for an instance of RadioButton
+         * @constructor
+         */
+        constructor(container: HTMLElement);
+        getValue(): boolean;
+        toggle(): void;
+        check(): void;
+        unCheck(): void;
+        removeListeners(): void;
+        protected _addListeners(): void;
+        private _RadioClickHandler(event);
+        private _dispatchSelectEvent();
+        private _RadioKeydownHandler(event);
+        private _FocusHandler();
+        private _BlurHandler();
+    }
+}
+
+/// <reference path="../RadioButton/RadioButton.d.ts" />
+declare namespace fabric {
+    /**
+     * ChoiceFieldGroup Plugin
+     *
+     * Adds basic demonstration functionality to .ms-ChoiceFieldGroup components.
+     *
+    */
+    class ChoiceFieldGroup {
+        private _choiceFieldGroup;
+        private _choiceFieldComponents;
+        /**
+         *
+         * @param {HTMLElement} container - the target container for an instance of ChoiceFieldGroup
+         * @constructor
+         */
+        constructor(container: HTMLElement);
+        removeListeners(): void;
+        private _initalSetup();
+        private _addListeners();
+        private _ChoiceFieldHandler(event);
+    }
+}
+
 /// <reference path="../ContextualHost/ContextualHost.d.ts" />
 /// <reference path="../Button/Button.d.ts" />
 declare namespace fabric {
@@ -593,14 +593,6 @@ declare namespace fabric {
         constructor(dialog: HTMLElement);
         close(): void;
         open(): void;
-    }
-}
-
-declare namespace fabric {
-    /**
-     * DialogHost class
-     */
-    class DialogHost {
     }
 }
 
@@ -680,6 +672,14 @@ declare namespace fabric {
         private _closeOtherDropdowns();
         private _onCloseDropdown(evt);
         private _onItemSelection(evt);
+    }
+}
+
+declare namespace fabric {
+    /**
+     * DialogHost class
+     */
+    class DialogHost {
     }
 }
 

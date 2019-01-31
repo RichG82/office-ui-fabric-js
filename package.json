@@ -4,6 +4,8 @@
   "version": "1.4.0",
   "description": "The JavaScript front-end framework for building experiences for Office 365.",
   "license": "MIT",
+  "main": "dist/js/fabric.js",
+  "typings": "dist/js/fabric.d.ts",
   "scripts": {
     "test": "gulp"
   },
